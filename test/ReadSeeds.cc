@@ -47,13 +47,10 @@ void ReadSeeds::analyze(const edm::Event& e, const edm::EventSetup& es)
    for (TrajectorySeedCollection::const_iterator it=c->begin(); it!= c->end(); it++){
      std::cout <<" THIS seed has "<<(*it).nHits()<<" hits ...."<<std::endl;
      BasicTrajectorySeed::range r;
-     TrajectorySeed * ii = const_cast<TrajectorySeed *>(&(*it));
-     r = (*ii).recHits();
-     BasicTrajectorySeed::iterator iter;
+     r = (*it).recHits();
+     BasicTrajectorySeed::const_iterator iter;
      for (iter = r.first; iter != r.second; iter ++){
        std::cout <<" HIT "<<(*iter).geographicalId().rawId()<<" " <<(*iter).localPosition()<<std::endl;
-       std::cout <<" is this a pixel rechit??? "<<dynamic_cast<SiPixelRecHit*>(&(*iter))<<std::endl;
      }
-
    }
 }
