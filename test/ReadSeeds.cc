@@ -14,12 +14,13 @@
 #include "FWCore/Framework/interface/Handle.h"
 #include "FWCore/Framework/interface/ESHandle.h"
 #include "FWCore/Framework/interface/EventSetup.h"
-
+#include "Geometry/Vector/interface/GlobalPoint.h"
 #include "Geometry/TrackerGeometryBuilder/interface/TrackerGeometry.h"
 #include "Geometry/Records/interface/TrackerDigiGeometryRecord.h"
 #include "Geometry/CommonDetUnit/interface/GeomDetType.h"
 #include "Geometry/CommonDetUnit/interface/GeomDetUnit.h"
 #include "DataFormats/TrackerRecHit2D/interface/SiPixelRecHit.h"
+
 
 
 
@@ -39,7 +40,9 @@ void ReadSeeds::analyze(const edm::Event& e, const edm::EventSetup& es)
   // Step A: Get Inputs 
   edm::Handle<TrajectorySeedCollection> coll;
   e.getByType(coll);
-  
+ 
+  edm::ESHandle<TrackerGeometry> tracker;
+  es.get<TrackerDigiGeometryRecord>().get(tracker);
   std::cout <<" FOUND "<<(coll.product())->size()<<" Seeds."<<std::endl;
   
    const TrajectorySeedCollection * c = coll.product();
@@ -50,7 +53,8 @@ void ReadSeeds::analyze(const edm::Event& e, const edm::EventSetup& es)
      r = (*it).recHits();
      BasicTrajectorySeed::const_iterator iter;
      for (iter = r.first; iter != r.second; iter ++){
-       std::cout <<" HIT "<<(*iter).geographicalId().rawId()<<" " <<(*iter).localPosition()<<std::endl;
+       GlobalPoint gp = tracker->idToDet((*iter).geographicalId())->surface().toGlobal((*iter).localPosition());
+       std::cout <<" HIT "<<(*iter).geographicalId().rawId()<<" " <<gp<<std::endl;
      }
    }
 }
