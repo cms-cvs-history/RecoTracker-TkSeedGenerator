@@ -1,0 +1,6 @@
+module seedGenerator = GlobalPixelSeedGenerator{
+	double ptMin=0.9
+	double originRadius=0.2
+	double originHalfLength=15
+	double originZPosition=0
+}
