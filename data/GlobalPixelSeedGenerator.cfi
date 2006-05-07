@@ -1,4 +1,5 @@
 module seedGenerator = GlobalPixelSeedGenerator{
+        string HitProducer = "pixRecHitConverter"
 	double ptMin=0.9
 	double originRadius=0.2
 	double originHalfLength=15
