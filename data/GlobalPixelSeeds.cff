@@ -1,0 +1,11 @@
+############ initialize magnetic field #########################
+include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
+
+############### initialize geometry #####################
+include "Geometry/TrackerRecoData/data/trackerRecoGeometryXML.cfi"
+include "Geometry/TrackerGeometryBuilder/data/trackerGeometry.cfi"
+include "Geometry/TrackerNumberingBuilder/data/trackerNumberingGeometry.cfi"
+include "RecoTracker/GeometryESProducer/data/TrackerRecoGeometryESProducer.cfi"
+
+############### generate pixel seeds #####################
+include "RecoTracker/TkSeedGenerator/data/GlobalPixelSeeds.cfi"
