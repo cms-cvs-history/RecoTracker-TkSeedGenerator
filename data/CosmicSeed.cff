@@ -16,5 +16,5 @@ include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder
 
 
 ############### generate pixel seeds #####################
-include "RecoTracker/TkSeedGenerator/data/CosmicSeeds.cfi"
+include "RecoTracker/TkSeedGenerator/data/CosmicSeed.cfi"
 
