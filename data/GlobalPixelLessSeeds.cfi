@@ -1,0 +1,9 @@
+module GlobalPixelLessSeeds = GlobalPixelLessSeedGenerator{
+        string HitProducer = "LocalMeasurementConverter"
+	double ptMin=0.9
+	double originRadius=0.2
+	double originHalfLength=15
+	double originZPosition=0
+	string TTRHBuilder        =  "WithTrackAngle"
+
+}
