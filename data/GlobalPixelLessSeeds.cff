@@ -13,6 +13,8 @@ include "RecoLocalTracker/SiStripRecHitConverter/data/StripCPEfromTrackAngle.cfi
 #TransientTrackingBuilder
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
 
+# PropagatorWithMaterialESProducer
+include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
 ############### generate pixel seeds #####################
 include "RecoTracker/TkSeedGenerator/data/GlobalPixelLessSeeds.cfi"
