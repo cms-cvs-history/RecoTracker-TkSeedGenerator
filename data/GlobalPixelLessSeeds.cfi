@@ -1,5 +1,5 @@
 module GlobalPixelLessSeeds = GlobalPixelLessSeedGenerator{
-        string HitProducer = "LocalMeasurementConverter"
+        string HitProducer = "SiStripRecHits2D"
 	double ptMin=0.9
 	double originRadius=0.2
 	double originHalfLength=15
