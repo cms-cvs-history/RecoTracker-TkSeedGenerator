@@ -1,6 +1,8 @@
 module GlobalMixedSeeds = GlobalMixedSeedGenerator{
         string PixelHitProducer = "pixRecHitConverter"
-        string StripHitProducer = "SiStripRecHits2D"
+        InputTag matchedRecHits = SiStripRecHits2D:matchedRecHit
+        InputTag rphiRecHits    = SiStripRecHits2D:rphiRecHit
+        InputTag stereoRecHit   = SiStripRecHits2D:stereoRecHit
 	double ptMin=0.9
 	double originRadius=0.2
 	double originHalfLength=15
