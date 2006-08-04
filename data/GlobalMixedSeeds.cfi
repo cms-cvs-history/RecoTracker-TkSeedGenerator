@@ -1,9 +1,9 @@
-module GlobalMixedSeeds = GlobalMixedSeedGenerator{
+module globalMixedSeeds = GlobalMixedSeedGenerator{
 
         string PixelHitProducer = "siPixelRecHits"
         InputTag matchedRecHits = siStripMatchedRecHits:matchedRecHit
         InputTag rphiRecHits    = siStripMatchedRecHits:rphiRecHit
-        InputTag stereoRecHit   = siStripMatchedRecHits:stereoRecHit
+        InputTag stereoRecHits  = siStripMatchedRecHits:stereoRecHit
 	double ptMin=0.9
 	double originRadius=0.2
 	double originHalfLength=15
