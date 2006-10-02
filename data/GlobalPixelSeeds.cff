@@ -11,8 +11,10 @@ include "RecoTracker/GeometryESProducer/data/TrackerRecoGeometryESProducer.cfi"
 include "RecoLocalTracker/SiPixelRecHits/data/PixelCPEParmError.cfi"
 
 #TransientTrackingBuilder
-include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
-replace ttrhbwr.StripCPE = "Fake"
+es_module ttrhb4GlobalPixelSeeds = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+replace ttrhb4GlobalPixelSeeds.StripCPE = "Fake"
+replace ttrhb4GlobalPixelSeeds.ComponentName = "TTRHBuilder4GlobalPixelSeeds"
+
 
 # PropagatorWithMaterialESProducer
 include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
