@@ -6,6 +6,6 @@ module regionalPixelSeedGenerator = RegionalPixelSeedGenerator{
     double deltaEtaRegion = 0.1
     double deltaPhiRegion = 0.1
     string TTRHBuilder        =  "WithTrackAngle"
-    InputTag CandidateSrc = icone5Tau1
+    InputTag JetSrc = icone5Tau1
     string vertexSrc ="pixelVertices"
 }
