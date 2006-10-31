@@ -13,7 +13,7 @@ include "RecoLocalTracker/SiStripRecHitConverter/data/StripCPEfromTrackAngle.cfi
 
 #TransientTrackingBuilder
 include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
-es_module ttrhb4GlobalPixelSeeds = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+es_module ttrhb4GlobalPixelLessSeeds = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
 replace ttrhb4GlobalPixelLessSeeds.PixelCPE = "Fake"
 replace ttrhb4GlobalPixelLessSeeds.ComponentName = "TTRHBuilder4GlobalPixelLessSeeds"
 
