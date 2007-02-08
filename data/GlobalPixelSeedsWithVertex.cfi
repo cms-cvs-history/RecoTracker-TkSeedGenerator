@@ -1,0 +1,13 @@
+module globalPixelSeedsWithVertex = GlobalPixelSeedGeneratorWithVertex{
+        string HitProducer    = "siPixelRecHits"
+        string VertexProducer = "pixelVertices"
+	string TTRHBuilder    = "TTRHBuilder4GlobalPixelSeeds"
+
+	double ptMin         = 0.9
+	double vertexRadius  = 0.2
+	double vertexDeltaZ  = 0.2
+	#double vertexZSigmas = 3
+        bool   mergeOverlaps  = true
+
+        uint32 numberOfVertices = 9999
+}
