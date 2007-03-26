@@ -1,6 +1,7 @@
 module regionalPixelFromTrkSeeds = RegionalPixelSeedGeneratorFromTrk{
     string HitProducer = "siPixelRecHits"
     double ptMin = 1.0
+    bool vertexZConstrained = false
     double vertexZ = 0.0
     double originRadius = 0.2
     double originHalfLength = 15.0
