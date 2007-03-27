@@ -13,11 +13,9 @@ module seedsFromRegionHits = SeedGeneratorFromRegionHitsEDProducer {
     }
   }
 
+
   PSet OrderedHitsFactoryPSet = {
     string ComponentName = "StandardHitPairGenerator"
-    PSet LayerPSet = { 
-      int32 layerSetSize = 2 
-      vstring layerList = {"BPix1", "BPix2"}
-    }
+    include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi" 
   }
 }
