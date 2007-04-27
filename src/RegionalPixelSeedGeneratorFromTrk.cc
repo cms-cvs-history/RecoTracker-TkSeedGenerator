@@ -18,6 +18,7 @@
 #include "Geometry/TrackerGeometryBuilder/interface/TrackerGeometry.h"
 #include "RecoTracker/TkTrackingRegions/interface/RectangularEtaPhiTrackingRegion.h"
 #include "DataFormats/TrackReco/interface/Track.h"
+#include "DataFormats/VertexReco/interface/Vertex.h"
 #include "DataFormats/Math/interface/Vector3D.h"
 // Math
 #include "Math/GenVector/VectorUtil.h"
@@ -34,7 +35,8 @@ RegionalPixelSeedGeneratorFromTrk::RegionalPixelSeedGeneratorFromTrk(edm::Parame
  
   ptmin=conf_.getParameter<double>("ptMin");
   vertexZconstrained = conf_.getParameter<bool>("vertexZConstrained");
-  vertexz=conf_.getParameter<double>("vertexZ");
+  vertexzDefault=conf_.getParameter<double>("vertexZDefault");
+  vertexSrc=conf_.getParameter<string>("vertexSrc");
   originradius=conf_.getParameter<double>("originRadius");
   halflength=conf_.getParameter<double>("originHalfLength");
   deltaEta = conf_.getParameter<double>("deltaEtaRegion");
@@ -64,9 +66,22 @@ void RegionalPixelSeedGeneratorFromTrk::produce(edm::Event& e,  const edm::Event
  
   std::auto_ptr<TrajectorySeedCollection> output(new TrajectorySeedCollection());
  
-  //
+  // get highest Pt pixel vertex (if existing)
+  double deltaZVertex =  halflength;
+  if (vertexSrc.length()>1) {
+      edm::Handle<reco::VertexCollection> vertices;
+      e.getByLabel(vertexSrc,vertices);
+      const reco::VertexCollection vertCollection = *(vertices.product());
+      reco::VertexCollection::const_iterator ci = vertCollection.begin();
+      if (vertCollection.size()>0) {
+            originz = ci->z();
+      } else {
+            originz = vertexzDefault;
+            deltaZVertex = 15.;
+      }
+  }
  
-  //Get the jet direction
+  //Get the track directions
   edm::Handle<TrackCollection> trks;
   e.getByLabel(trkSrc, trks);
  
@@ -74,17 +89,16 @@ void RegionalPixelSeedGeneratorFromTrk::produce(edm::Event& e,  const edm::Event
       for(;iTrk != trks->end();iTrk++)
 	{
 	
-        double vz = vertexz;
+        double vz = originz;
         // Change Z vertex position according to track parameters  if requested
         if (vertexZconstrained) {
             vz = iTrk->dz();
-//printf(">>> RegionalPixelSeedGeneratorFromTrk: vz= % f, edz= %f, hlaflength= %f\n", vz, iTrk->dzError(), halflength);
         }
 	
 	  GlobalVector dirVector((iTrk)->px(),(iTrk)->py(),(iTrk)->pz());
 	
 	  RectangularEtaPhiTrackingRegion etaphiRegion(dirVector,
-              GlobalPoint(0,0,float(vz)), ptmin, originradius, halflength, deltaEta, deltaPhi);
+              GlobalPoint(0,0,float(vz)), ptmin, originradius, deltaZVertex, deltaEta, deltaPhi);
 	
 	  combinatorialSeedGenerator.init(*pixelHits,es);
 	  combinatorialSeedGenerator.run(etaphiRegion,*output,es);

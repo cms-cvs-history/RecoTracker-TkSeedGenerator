@@ -37,7 +37,8 @@ class RegionalPixelSeedGeneratorFromTrk : public edm::EDProducer
   CombinatorialRegionalSeedGeneratorFromPixel   combinatorialSeedGenerator;
   double ptmin;
   bool vertexZconstrained;
-  double vertexz;
+  double vertexzDefault;
+  std::string vertexSrc;
   double originradius;
   double halflength;
   double originz;
