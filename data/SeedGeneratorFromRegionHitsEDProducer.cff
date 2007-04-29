@@ -11,4 +11,10 @@
   include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
 
+#TransientTrackingBuilder
+es_module ttrhb4GlobalPixelSeeds = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+replace ttrhb4GlobalPixelSeeds.StripCPE = "Fake"
+replace ttrhb4GlobalPixelSeeds.ComponentName = "TTRHBuilder4GlobalPixelSeeds"
+
+
   include "RecoTracker/TkSeedGenerator/data/SeedGeneratorFromRegionHitsEDProducer.cfi"
