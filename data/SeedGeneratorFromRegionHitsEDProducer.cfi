@@ -1,7 +1,5 @@
 module seedsFromRegionHits = SeedGeneratorFromRegionHitsEDProducer {
 
-  string TTRHBuilder        =  "WithTrackAngle"
-
   PSet RegionFactoryPSet = {
     string ComponentName = "GlobalRegionProducer"
     include "RecoTracker/TkTrackingRegions/data/GlobalTrackingRegion.cfi"
