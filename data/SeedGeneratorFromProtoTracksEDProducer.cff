@@ -10,9 +10,9 @@
   include "RecoTracker/MeasurementDet/data/MeasurementTrackerESProducer.cfi"
   include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
-  es_module ttrhb4PixelTriplets = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
-  replace ttrhb4PixelTriplets.StripCPE = "Fake"
-  replace ttrhb4PixelTriplets.ComponentName = "TTRHBuilder4PixelTriplets"
+  es_module ttrhb4PixelTracks = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+  replace ttrhb4PixelTracks.StripCPE = "Fake"
+  replace ttrhb4PixelTracks.ComponentName = "PixelTTRHBuilderWithoutAngle"
 
   include "RecoPixelVertexing/PixelTrackFitting/data/PixelTracks.cfi"
   include "RecoTracker/TkSeedGenerator/data/SeedGeneratorFromProtoTracksEDProducer.cfi"
