@@ -10,8 +10,5 @@
   include "RecoTracker/MeasurementDet/data/MeasurementTrackerESProducer.cfi"
   include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
-es_module ttrhb4Pixel = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
-replace ttrhb4Pixel.StripCPE = "Fake"
-replace ttrhb4Pixel.ComponentName = "PixelTTRHBuilderWithoutAngle"
-
+  include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi"
   include "RecoTracker/TkSeedGenerator/data/SeedGeneratorFromRegionHitsEDProducer.cfi"

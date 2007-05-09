@@ -1,9 +1,19 @@
-module globalPixelSeeds = GlobalPixelSeedGenerator{
-        string HitProducer = "siPixelRecHits"
-	double ptMin=0.9
-	double originRadius=0.2
-	double originHalfLength=15
-	double originZPosition=0
-	string TTRHBuilder        =  "TTRHBuilder4GlobalPixelSeeds"
+module globalPixelSeeds = SeedGeneratorFromRegionHitsEDProducer {
+
+  string TTRHBuilder        =  "WithTrackAngle"
+
+  PSet RegionFactoryPSet = {
+    string ComponentName = "GlobalRegionProducer"
+    include "RecoTracker/TkTrackingRegions/data/GlobalTrackingRegion.cfi"
+  }
+
+  PSet SeedComparitorPSet = { string ComponentName = "none" }
+//  include "RecoTracker/PixelStubs/data/SeedComparitorWithPixelStubs.cfi"
+
+  PSet OrderedHitsFactoryPSet = {
+    string ComponentName = "StandardHitPairGenerator"
+    string SeedingLayers = "PixelLayerPairs"
+  }
 
 }
+
