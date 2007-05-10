@@ -8,7 +8,7 @@ module globalPixelSeeds = SeedGeneratorFromRegionHitsEDProducer {
   }
 
   PSet SeedComparitorPSet = { string ComponentName = "none" }
-//  include "RecoTracker/PixelStubs/data/SeedComparitorWithPixelStubs.cfi"
+//include "RecoTracker/PixelStubs/data/SeedComparitorWithPixelStubs.cfi"
 
   PSet OrderedHitsFactoryPSet = {
     string ComponentName = "StandardHitPairGenerator"
