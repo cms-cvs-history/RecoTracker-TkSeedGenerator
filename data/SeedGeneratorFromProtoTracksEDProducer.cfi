@@ -1,0 +1,6 @@
+module seedsFromProtoTracks  = SeedGeneratorFromProtoTracksEDProducer {
+
+  string TTRHBuilder        =  "WithTrackAngle"
+
+  InputTag InputCollection = pixelTracks
+}
