@@ -1,25 +1,16 @@
-############ initialize magnetic field #########################
-include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
+  include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
+  include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
+  include "Geometry/TrackerGeometryBuilder/data/trackerGeometry.cfi"
+  include "Geometry/TrackerNumberingBuilder/data/trackerNumberingGeometry.cfi"
+  include "RecoTracker/GeometryESProducer/data/TrackerRecoGeometryESProducer.cfi"
+  include "RecoLocalTracker/SiStripRecHitConverter/data/StripCPEfromTrackAngle.cfi"
+  include "RecoLocalTracker/SiStripRecHitConverter/data/SiStripRecHitMatcher.cfi"
+  include "RecoLocalTracker/SiPixelRecHits/data/PixelCPEParmError.cfi"
+  include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
+  include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
+  include "RecoTracker/MeasurementDet/data/MeasurementTrackerESProducer.cfi"
+  include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
-############### initialize geometry #####################
-include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
-include "Geometry/TrackerGeometryBuilder/data/trackerGeometry.cfi"
-include "Geometry/TrackerNumberingBuilder/data/trackerNumberingGeometry.cfi"
-include "RecoTracker/GeometryESProducer/data/TrackerRecoGeometryESProducer.cfi"
-
-# stripCPE
-include "RecoLocalTracker/SiStripRecHitConverter/data/StripCPEfromTrackAngle.cfi"
-
-
-#TransientTrackingBuilder
-include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilderWithoutRefit.cfi"
-es_module ttrhb4GlobalPixelLessSeeds = ttrhbwr from "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder.cfi"
-replace ttrhb4GlobalPixelLessSeeds.PixelCPE = "Fake"
-replace ttrhb4GlobalPixelLessSeeds.ComponentName = "TTRHBuilder4GlobalPixelLessSeeds"
-
-# PropagatorWithMaterialESProducer
-include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
-
-############### generate pixel seeds #####################
-include "RecoTracker/TkSeedGenerator/data/GlobalPixelLessSeeds.cfi"
+  include "RecoTracker/TkSeedingLayers/data/PixelLessLayerPairs.cfi"
+  include "RecoTracker/TkSeedGenerator/data/GlobalPixelLessSeeds.cfi"
 
