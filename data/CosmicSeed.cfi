@@ -6,6 +6,7 @@
     double originRadius=150
     double originHalfLength=90
     double originZPosition=0
+    double SeedPt = 1.0	
     string TTRHBuilder        =  "WithTrackAngle"	
     untracked string GeometricStructure  = "STANDARD" //other choice: TIBD+
   }
