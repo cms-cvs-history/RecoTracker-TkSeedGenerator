@@ -12,5 +12,5 @@
 
   include "RecoTracker/TkSeedingLayers/data/MixedLayerTriplets.cfi"
   include "RecoTracker/TkSeedingLayers/data/PixelLayerTriplets.cfi"
-  include "RecoTracker/TkSeedGenerator/data/GlobalTripletSeeds.cfi"
+  include "RecoTracker/TkSeedGenerator/data/GlobalSeedsFromTripletsWithVertices.cfi"
 
