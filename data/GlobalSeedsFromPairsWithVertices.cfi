@@ -1,0 +1,19 @@
+module globalSeedsFromPairsWithVertices = SeedGeneratorFromRegionHitsEDProducer {
+
+  string TTRHBuilder        =  "WithTrackAngle"
+
+  PSet RegionFactoryPSet = {
+    string ComponentName = "GlobalTrackingRegionWithVerticesProducer"
+    include "RecoTracker/TkTrackingRegions/data/GlobalTrackingRegionWithVertices.cfi"
+  }
+
+  PSet SeedComparitorPSet = { string ComponentName = "none" }
+//include "RecoTracker/PixelStubs/data/SeedComparitorWithPixelStubs.cfi"
+
+  PSet OrderedHitsFactoryPSet = {
+    string ComponentName = "StandardHitPairGenerator"
+    string SeedingLayers = "MixedLayerPairs"
+  }
+
+}
+

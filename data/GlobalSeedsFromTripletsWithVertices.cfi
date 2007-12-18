@@ -1,0 +1,20 @@
+module globalSeedsFromTripletsWithVertices = SeedGeneratorFromRegionHitsEDProducer {
+
+  string TTRHBuilder        =  "WithTrackAngle"
+
+  PSet RegionFactoryPSet = {
+    string ComponentName = "GlobalRegionProducer"
+    include "RecoTracker/TkTrackingRegions/data/GlobalTrackingRegion.cfi"
+  }
+
+  PSet SeedComparitorPSet = { string ComponentName = "none" }
+//include "RecoTracker/PixelStubs/data/SeedComparitorWithPixelStubs.cfi"
+
+  PSet OrderedHitsFactoryPSet = {
+    string ComponentName = "StandardHitTripletGenerator"
+    string SeedingLayers = "MixedLayerTriplets"
+    include "RecoPixelVertexing/PixelTriplets/data/PixelTripletHLTGenerator.cfi"
+  }
+
+}
+

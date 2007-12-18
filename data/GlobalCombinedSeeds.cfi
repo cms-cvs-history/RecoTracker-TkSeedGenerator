@@ -1,0 +1,6 @@
+module globalCombinedSeeds = SeedCombiner {
+
+   untracked string PairCollection = "globalSeedsFromPairsWithVertices"
+   untracked string TripletCollection = "globalSeedsFromTripletsWithVertices"
+
+}
