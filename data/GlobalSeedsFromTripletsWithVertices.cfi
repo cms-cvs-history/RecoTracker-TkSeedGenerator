@@ -12,7 +12,7 @@ module globalSeedsFromTripletsWithVertices = SeedGeneratorFromRegionHitsEDProduc
 
   PSet OrderedHitsFactoryPSet = {
     string ComponentName = "StandardHitTripletGenerator"
-    string SeedingLayers = "MixedLayerTriplets"
+    string SeedingLayers = "PixelLayerTriplets"
     include "RecoPixelVertexing/PixelTriplets/data/PixelTripletHLTGenerator.cfi"
   }
 
