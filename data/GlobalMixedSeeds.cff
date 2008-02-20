@@ -21,6 +21,7 @@ include "RecoTracker/TransientTrackingRecHit/data/TransientTrackingRecHitBuilder
 include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
 ############### generate pixel seeds #####################
+include "RecoTracker/TkSeedingLayers/data/TTRHBuilderWithoutAngle4MixedPairs.cfi"
 include "RecoTracker/TkSeedingLayers/data/MixedLayerPairs.cfi"
 include "RecoTracker/TkSeedGenerator/data/GlobalMixedSeeds.cfi"
 

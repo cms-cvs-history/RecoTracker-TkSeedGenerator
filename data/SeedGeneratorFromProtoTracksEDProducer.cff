@@ -15,6 +15,7 @@ es_module pixelTTRHBuilderWithoutAngle
 replace pixelTTRHBuilderWithoutAngle.StripCPE = "Fake"
 replace pixelTTRHBuilderWithoutAngle.ComponentName = "PixelTTRHBuilderWithoutAngle"
 
+  include "RecoTracker/TkSeedingLayers/data/TTRHBuilderWithoutAngle4PixelTriplets.cfi"
   include "RecoTracker/TkSeedingLayers/data/PixelLayerTriplets.cfi"
   include "RecoPixelVertexing/PixelTrackFitting/data/PixelTracks.cfi"
   include "RecoTracker/TkSeedGenerator/data/SeedGeneratorFromProtoTracksEDProducer.cfi"

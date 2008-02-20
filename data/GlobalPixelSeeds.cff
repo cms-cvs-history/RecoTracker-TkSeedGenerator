@@ -10,6 +10,7 @@
   include "RecoTracker/MeasurementDet/data/MeasurementTrackerESProducer.cfi"
   include "TrackingTools/MaterialEffects/data/MaterialPropagator.cfi"
 
+  include "RecoTracker/TkSeedingLayers/data/TTRHBuilderWithoutAngle4PixelPairs.cfi"
   include "RecoTracker/TkSeedingLayers/data/PixelLayerPairs.cfi"
   include "RecoTracker/TkSeedGenerator/data/GlobalPixelSeeds.cfi"
 
