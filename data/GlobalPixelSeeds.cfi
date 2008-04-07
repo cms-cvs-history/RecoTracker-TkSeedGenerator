@@ -1,10 +1,12 @@
+include "RecoTracker/TkTrackingRegions/data/GlobalTrackingRegion.cfi"
+
 module globalPixelSeeds = SeedGeneratorFromRegionHitsEDProducer {
 
   string TTRHBuilder        =  "WithTrackAngle"
 
   PSet RegionFactoryPSet = {
     string ComponentName = "GlobalRegionProducer"
-    include "RecoTracker/TkTrackingRegions/data/GlobalTrackingRegion.cfi"
+    using RegionPSetBlock
   }
 
   PSet SeedComparitorPSet = { string ComponentName = "none" }
