@@ -1,4 +1,3 @@
-  include "MagneticField/Engine/data/volumeBasedMagneticField.cfi"
   include "Geometry/CMSCommonData/data/cmsIdealGeometryXML.cfi"
   include "Geometry/TrackerGeometryBuilder/data/trackerGeometry.cfi"
   include "Geometry/TrackerNumberingBuilder/data/trackerNumberingGeometry.cfi"
