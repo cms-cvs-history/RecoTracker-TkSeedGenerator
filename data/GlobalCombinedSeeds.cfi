@@ -1,6 +1,0 @@
-module globalCombinedSeeds = SeedCombiner {
-
-   InputTag PairCollection = "globalSeedsFromPairsWithVertices"
-   InputTag TripletCollection = "globalSeedsFromTripletsWithVertices"
-
-}
