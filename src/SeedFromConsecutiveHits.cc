@@ -89,11 +89,13 @@ CurvilinearTrajectoryError SeedFromConsecutiveHits::
 {
   AlgebraicSymMatrix C(5,1);
 
-  C[0][0] = sinTheta/ptMin; 
+  float sin2th = sqr(sinTheta);
+  float minC00 = 1.0;
+  C[0][0] = std::max(sin2th/sqr(ptMin), minC00);
   float zErr = vertexErr.czz();
   float transverseErr = vertexErr.cxx(); // assume equal cxx cyy 
   C[3][3] = transverseErr;
-  C[4][4] = zErr*sqr(sinTheta*2) + transverseErr*(1-sqr(sinTheta));
+  C[4][4] = zErr*sin2th + transverseErr*(1-sin2th);
 
   return CurvilinearTrajectoryError(C);
 }
