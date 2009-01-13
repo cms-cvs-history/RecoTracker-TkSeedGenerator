@@ -8,6 +8,6 @@ from RecoTracker.TransientTrackingRecHit.TransientTrackingRecHitBuilder_cfi impo
 from RecoTracker.TransientTrackingRecHit.TransientTrackingRecHitBuilderWithoutRefit_cfi import *
 from RecoTracker.MeasurementDet.MeasurementTrackerESProducer_cfi import *
 from TrackingTools.MaterialEffects.MaterialPropagator_cfi import *
-from RecoTracker.TkSeedingLayers.PixelLessLayerPairs_cfi import *
+from RecoTracker.TkSeedingLayers.PixelLessLayerPairs4PixelLessTracking_cfi import *
 from RecoTracker.TkSeedGenerator.GlobalPixelLessSeeds_cfi import *
 
