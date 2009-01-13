@@ -4,7 +4,7 @@ from RecoTracker.TkTrackingRegions.GlobalTrackingRegion_cfi import *
 globalPixelLessSeeds = cms.EDProducer("SeedGeneratorFromRegionHitsEDProducer",
     OrderedHitsFactoryPSet = cms.PSet(
         ComponentName = cms.string('StandardHitPairGenerator'),
-        SeedingLayers = cms.string('PixelLessLayerPairs')
+        SeedingLayers = cms.string('pixelLessLayerPairs4PixelLessTracking')
     ),
     SeedComparitorPSet = cms.PSet(
         ComponentName = cms.string('none')
