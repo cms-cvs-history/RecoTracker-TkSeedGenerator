@@ -26,11 +26,6 @@ public:
 						const edm::EventSetup& es);
 protected:
 
-  virtual bool checkHit(
-      const TrajectoryStateOnSurface &,
-      const TransientTrackingRecHit::ConstRecHitPointer &hit,
-      const edm::EventSetup& es) const { return true; }
-
   virtual GlobalTrajectoryParameters initialKinematic(
       const SeedingHitSet & hits, 
       const TrackingRegion & region, 

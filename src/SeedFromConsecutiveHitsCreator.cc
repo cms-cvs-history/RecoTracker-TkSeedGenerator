@@ -126,8 +126,6 @@ const TrajectorySeed * SeedFromConsecutiveHitsCreator::buildSeed(
     TransientTrackingRecHit::ConstRecHitPointer tth = hits[iHit]; 
     
     TransientTrackingRecHit::RecHitPointer newtth = refitHit( tth, state);
-    
-    if (!checkHit(state,newtth,es)) return 0;
 
     updatedState =  updator.update(state, *newtth);
     
