@@ -1,6 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 
-from RecoTracker.TkTrackingRegions.GlobalTrackingRegionFromBeamSpot_cfi import *
+from RecoTracker.TkTrackingRegions.GlobalTrackingRegion_cfi import *
 from RecoTracker.TkSeedGenerator.SeedFromConsecutiveHitsCreator_cfi import *
 #from RecoTracker.TkSeedGenerator.SeedFromConsecutiveHitsStraightLineCreator_cfi import *
 #from RecoTracker.TkSeedGenerator.SeedFromConsecutiveHitsTripletOnlyCreator_cfi import *
@@ -14,8 +14,8 @@ seedGeneratorFromRegionHitsEDProducer = cms.EDProducer("SeedGeneratorFromRegionH
         ComponentName = cms.string('none')
     ),
     RegionFactoryPSet = cms.PSet(
-        RegionPsetFomBeamSpotBlock,
-        ComponentName = cms.string('GlobalRegionProducerFromBeamSpot')
+        RegionPSetBlock,
+        ComponentName = cms.string('GlobalRegionProducer')
     ),
 # This works best ...
     SeedCreatorPSet = cms.PSet(SeedFromConsecutiveHitsCreator),
