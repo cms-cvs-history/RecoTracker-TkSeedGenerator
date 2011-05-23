@@ -3,6 +3,8 @@
 
 #include "RecoTracker/TkSeedGenerator/interface/SeedCreator.h"
 #include "RecoTracker/TkSeedingLayers/interface/SeedingHitSet.h"
+#include "FWCore/MessageLogger/interface/MessageLogger.h"
+
 class FreeTrajectoryState;
 
 class SeedFromConsecutiveHitsCreator : public SeedCreator {
@@ -11,7 +13,22 @@ public:
   SeedFromConsecutiveHitsCreator( const edm::ParameterSet & cfg):
     thePropagatorLabel(cfg.getParameter<std::string>("propagator")),
     theBOFFMomentum(cfg.existsAs<double>("SeedMomentumForBOFF") ? cfg.getParameter<double>("SeedMomentumForBOFF") : 5.0)
-      {}
+      {
+	if (cfg.exists("probCut")){
+	  probCut_ = cfg.getParameter<double>("probCut");
+	  edm::LogInfo("SeedFromConsecutiveHitsCreator")<<" ready to cut on cluster probability at :"<<probCut_;
+	}
+	else
+	  probCut_ = -1;
+	
+	if (cfg.exists("maxSeeds"))
+	  {
+	    maxSeeds_ = cfg.getParameter<int>("maxSeeds");
+	    edm::LogInfo("SeedFromConsecutiveHitsCreator")<<" truncating at: "<<maxSeeds_<<" seeds";
+	  }
+	else
+	  maxSeeds_=-1;
+      }
 
   SeedFromConsecutiveHitsCreator( 
       const std::string & propagator = "PropagatorWithMaterial", double seedMomentumForBOFF = -5.0) 
@@ -29,7 +46,15 @@ protected:
   virtual bool checkHit(
       const TrajectoryStateOnSurface &,
       const TransientTrackingRecHit::ConstRecHitPointer &hit,
-      const edm::EventSetup& es) const { return true; }
+      const edm::EventSetup& es) const { 
+    if (probCut_>0){
+      double prob=hit->clusterProbability();
+      if (prob< probCut_ )
+	LogDebug("SeedFromConsecutiveHitsCreator")<<"a bad hit ?"<< hit->hit()->geographicalId().rawId()<<" : "<<prob;
+      return (prob>probCut_);
+    }else
+      return true;
+  }
 
   virtual GlobalTrajectoryParameters initialKinematic(
       const SeedingHitSet & hits, 
@@ -53,6 +78,7 @@ protected:
 protected:
     std::string thePropagatorLabel;
     double theBOFFMomentum;
-
+    double probCut_;
+    int maxSeeds_;
 };
 #endif 

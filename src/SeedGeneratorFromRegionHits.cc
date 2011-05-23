@@ -45,7 +45,10 @@ void SeedGeneratorFromRegionHits::run(TrajectorySeedCollection & seedCollection,
   for (unsigned int iHits = 0; iHits < nHitss; ++iHits) { 
     const SeedingHitSet & hits =  hitss[iHits];
     if (!theComparitor || theComparitor->compatible( hits, es) ) {
-      theSeedCreator->trajectorySeed(seedCollection, hits, region, es);
+      const TrajectorySeed * signal = theSeedCreator->trajectorySeed(seedCollection, hits, region, es);
+      if (signal == (const TrajectorySeed *)0x1){
+	break;
+      }
     }
   }
   theHitsGenerator->clear();

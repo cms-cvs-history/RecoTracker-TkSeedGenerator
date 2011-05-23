@@ -104,6 +104,11 @@ const TrajectorySeed * SeedFromConsecutiveHitsCreator::buildSeed(
     const FreeTrajectoryState & fts,
     const edm::EventSetup& es) const
 {
+  if (seedCollection.size() > (uint) maxSeeds_){
+    edm::LogError("TooManySeeds")<<" a limit of: "<<maxSeeds_<<" has been reached, bailing out. No seeds for this step.";
+    seedCollection.clear();
+    return (const TrajectorySeed *) 0x1;
+  }
   // get tracker
   edm::ESHandle<TrackerGeometry> tracker;
   es.get<TrackerDigiGeometryRecord>().get(tracker);
