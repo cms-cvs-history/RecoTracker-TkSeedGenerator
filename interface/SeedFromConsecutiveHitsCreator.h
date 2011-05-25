@@ -32,7 +32,10 @@ public:
 
   SeedFromConsecutiveHitsCreator( 
       const std::string & propagator = "PropagatorWithMaterial", double seedMomentumForBOFF = -5.0) 
-   : thePropagatorLabel(propagator), theBOFFMomentum(seedMomentumForBOFF) { }
+   : thePropagatorLabel(propagator), theBOFFMomentum(seedMomentumForBOFF) {
+    probCut_=-1;
+    maxSeeds_=-1;
+  }
 
   //dtor
   virtual ~SeedFromConsecutiveHitsCreator(){}
