@@ -102,7 +102,7 @@ void SeedGeneratorFromRegionHitsEDProducer::produce(edm::Event& ev, const edm::E
 
     // make quadruplets
     // (TODO: can partly be propagated to the merger)
-    TrajectorySeedCollection const& tempQuads = theMerger.mergeTriplets( *triplets, region, es ); //@@
+    TrajectorySeedCollection const& tempQuads = theMerger.mergeTriplets( *triplets, region, es, theConfig ); //@@
     for( TrajectorySeedCollection::const_iterator qIt = tempQuads.begin(); qIt < tempQuads.end(); ++qIt ) {
       quadruplets->push_back( *qIt );
     }
