@@ -89,12 +89,13 @@ void SeedGeneratorFromProtoTracksEDProducer::produce(edm::Event& ev, const edm::
       for (unsigned int iHit = 0, nHits = proto.recHitsSize(); iHit < nHits; ++iHit) {
         TrackingRecHitRef refHit = proto.recHit(iHit);
         if(refHit->isValid()) hits.push_back(ttrhbESH->build(  &(*refHit) ));
-        sort(hits.begin(), hits.end(), HitLessByRadius());
+//        sort(hits.begin(), hits.end(), HitLessByRadius()); // inefficient change to 520 version
       }
-      if (hits.size() >= 2) {
+      sort(hits.begin(), hits.end(), HitLessByRadius());
+      if (hits.size() > 1) {
         double mom_perp = sqrt(proto.momentum().x()*proto.momentum().x()+proto.momentum().y()*proto.momentum().y());
 	GlobalTrackingRegion region(mom_perp, vtx, 0.2, 0.2);
-	SeedFromConsecutiveHitsCreator().trajectorySeed(*result, SeedingHitSet(hits), region, es);
+        SeedFromConsecutiveHitsCreator().trajectorySeed(*result, SeedingHitSet(hits), region, es, 0);
       }
     }
   } 
